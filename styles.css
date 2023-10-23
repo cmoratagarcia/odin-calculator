@@ -29,6 +29,7 @@
     height: 50px;
     line-height: 50px;
     text-align: center;
+    font-weight: bold;
 }
 
 .undo-buttons {
@@ -52,4 +53,24 @@
 
 .keypad button {
        width: 50px;
+}
+
+#clear-btn {
+    background: red;
+    color: white;
+}
+
+#del-btn {
+    background: #d99f0d;
+    color: white;
+}
+
+#equal {
+    background: green;
+    color: white;
+
+}
+
+.lighter {
+    font-weight:400;
 }

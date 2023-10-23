@@ -1,5 +1,7 @@
 * {
     box-sizing: border-box;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px;
 }
 
 .container {
@@ -10,10 +12,14 @@
     border: 5px solid black;
 }
 
-.display {
+.display {    
+    font-family: 'Wallpoet', sans-serif;
+    font-size: 50px;
     background: #cadbce;
     height: 60px;
     width: 360px;
+    text-align: right;
+    line-height: 60px;
     margin: 20px auto;
 }
 
@@ -21,6 +27,8 @@
     cursor: pointer;
     background: #e3e8e4;
     height: 50px;
+    line-height: 50px;
+    text-align: center;
 }
 
 .undo-buttons {

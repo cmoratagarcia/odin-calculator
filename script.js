@@ -3,11 +3,12 @@ const clearBtn = document.querySelector("#clear-btn");
 const deleteBtn = document.querySelector("#del-btn");
 const numbers = document.querySelectorAll(".number");
 const operators = document.querySelectorAll(".operator");
+const equal = document.querySelector("#equal");
 
 display.textContent = "";
 
-let firstNum = 0;
-let secondNum = 0;
+let firstValue = "";
+let secondValue = "";
 let symbol = "";
 //add event listener to each button
 numbers.forEach((number) => {
@@ -15,14 +16,14 @@ numbers.forEach((number) => {
     //Add a max length
 
     //take inner text
-    //after each press, update display
     let value = number.textContent;
+    //after each press, update display
     display.textContent += value;
     //If operator hasn't been entered, store as first value
-    if ((symbol = "")) {
-      firstNum = value;
+    if (symbol === "") {
+      firstValue += value;
     } else {
-      secondNum = value;
+      secondValue += value;
     }
   });
 });
@@ -40,6 +41,10 @@ operators.forEach((operator) => {
 
 //return result at fourth press
 //add event listener to equal, return result and reset display
+equal.addEventListener("click", () => {
+  let result = operate(firstValue, symbol, secondValue);
+  display.textContent = result;
+});
 //add event listener for clear and delete
 
 function operate(firstNum, operator, secondNum) {

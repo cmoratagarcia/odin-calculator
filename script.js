@@ -10,6 +10,7 @@ display.textContent = "";
 let firstValue = "";
 let secondValue = "";
 let symbol = "";
+let result = 0;
 //add event listener to each button
 numbers.forEach((number) => {
   number.addEventListener("click", () => {
@@ -34,7 +35,7 @@ operators.forEach((operator) => {
       symbol = operator.textContent;
       display.textContent += symbol;
     } else {
-      let result = operate(Number(firstValue), symbol, Number(secondValue));
+      result = operate(Number(firstValue), symbol, Number(secondValue));
       display.textContent = result;
     }
     //take operator value
@@ -45,7 +46,7 @@ operators.forEach((operator) => {
 
 //add event listener to equal, return result and reset display
 equal.addEventListener("click", () => {
-  let result = operate(Number(firstValue), symbol, Number(secondValue));
+  result = operate(Number(firstValue), symbol, Number(secondValue));
   display.textContent = result;
 });
 //add event listener for clear and delete

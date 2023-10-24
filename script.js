@@ -10,12 +10,15 @@ let firstValue = "";
 let secondValue = "";
 let symbol = "";
 let result = "";
+let storedResult = "";
 
 numbers.forEach((number) => {
   number.addEventListener("click", () => {
     //Add a max length
+    if (storedResult !== "") {
+      clear();
+    }
     let value = number.textContent;
-
     display.textContent += value;
     //If operator hasn't been entered, store as first value
     if (symbol === "") {
@@ -29,14 +32,14 @@ numbers.forEach((number) => {
 operators.forEach((operator) => {
   operator.addEventListener("click", () => {
     if (symbol === "") {
+      if (storedResult !== "") {
+        firstValue = storedResult;
+      }
       symbol = operator.textContent;
       display.textContent += symbol;
     } else {
       endOperation();
     }
-    //take operator value
-
-    //if second press, return result
   });
 });
 
@@ -83,12 +86,10 @@ function divide(a, b) {
 }
 
 function endOperation() {
-  result = operate(Number(firstValue), symbol, Number(secondValue));
+  longResult = operate(Number(firstValue), symbol, Number(secondValue));
+  result = +longResult.toFixed(4);
   display.textContent = result;
-  firstValue = result;
-  secondValue = "";
-  symbol = "";
-  result = "";
+  storedResult = result;
 }
 
 function clear() {
@@ -97,4 +98,5 @@ function clear() {
   secondValue = "";
   symbol = "";
   result = "";
+  storedResult = "";
 }

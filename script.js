@@ -30,9 +30,15 @@ numbers.forEach((number) => {
 
 operators.forEach((operator) => {
   operator.addEventListener("click", () => {
+    if (symbol === "") {
+      symbol = operator.textContent;
+      display.textContent += symbol;
+    } else {
+      let result = operate(Number(firstValue), symbol, Number(secondValue));
+      display.textContent = result;
+    }
     //take operator value
-    symbol = operator.textContent;
-    display.textContent += symbol;
+
     //if second press, return result
   });
 });

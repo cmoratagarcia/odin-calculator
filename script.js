@@ -10,21 +10,29 @@ display.textContent = "";
 let firstValue = "";
 let secondValue = "";
 let symbol = "";
-let result = 0;
+let result = "";
 //add event listener to each button
 numbers.forEach((number) => {
   number.addEventListener("click", () => {
     //Add a max length
 
-    //take inner text
     let value = number.textContent;
-    //after each press, update display
-    display.textContent += value;
-    //If operator hasn't been entered, store as first value
-    if (symbol === "") {
-      firstValue += value;
-    } else {
-      secondValue += value;
+    //Clear screen after result
+    if (result !== "") {
+      result = "";
+      display.textContent = result;
+      display.textContent += value;
+    }
+    //take inner text
+    else {
+      //after each press, update display
+      display.textContent += value;
+      //If operator hasn't been entered, store as first value
+      if (symbol === "") {
+        firstValue += value;
+      } else {
+        secondValue += value;
+      }
     }
   });
 });
@@ -47,6 +55,7 @@ operators.forEach((operator) => {
 //add event listener to equal, return result and reset display
 equal.addEventListener("click", () => {
   result = operate(Number(firstValue), symbol, Number(secondValue));
+  console.log(symbol);
   display.textContent = result;
 });
 //add event listener for clear and delete
@@ -59,12 +68,10 @@ function operate(firstNum, operator, secondNum) {
     case "-":
       return subtract(firstNum, secondNum);
       break;
-    //Fix!
-    case "&times":
+    case "×":
       return multiply(firstNum, secondNum);
       break;
-    //Fix!
-    case "&div":
+    case "÷":
       return divide(firstNum, secondNum);
       break;
   }

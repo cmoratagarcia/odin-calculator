@@ -4,20 +4,27 @@ const deleteBtn = document.querySelector("#del-btn");
 const numbers = document.querySelectorAll(".number");
 const operators = document.querySelectorAll(".operator");
 
-display.textContent = "0";
+display.textContent = "";
 //add event listener to each button
 numbers.forEach((number) => {
-  number.addEventListener("click", () => {});
+  number.addEventListener("click", () => {
+    //take inner text
+    //after each press, update display
+    let value = number.textContent;
+    display.textContent += value;
+  });
 });
 
 operators.forEach((operator) => {
-  operator.addEventListener("click", () => {});
+  operator.addEventListener("click", () => {
+    //after each operator, store first number
+    //take operator value
+    //if second press, return result
+  });
 });
 
-//take inner text
-//after each press, update display
-//asign to firstnum, operator, and secondnum
 //return result at fourth press
+//add event listener to equal, return result and reset display
 
 function operate(firstNum, operator, secondNum) {
   switch (operator) {

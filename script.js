@@ -11,6 +11,7 @@ let firstValue = "";
 let secondValue = "";
 let symbol = "";
 let result = "";
+
 //add event listener to each button
 numbers.forEach((number) => {
   number.addEventListener("click", () => {
@@ -43,8 +44,7 @@ operators.forEach((operator) => {
       symbol = operator.textContent;
       display.textContent += symbol;
     } else {
-      result = operate(Number(firstValue), symbol, Number(secondValue));
-      display.textContent = result;
+      endOperation();
     }
     //take operator value
 
@@ -54,9 +54,7 @@ operators.forEach((operator) => {
 
 //add event listener to equal, return result and reset display
 equal.addEventListener("click", () => {
-  result = operate(Number(firstValue), symbol, Number(secondValue));
-  console.log(symbol);
-  display.textContent = result;
+  endOperation();
 });
 //add event listener for clear and delete
 
@@ -91,4 +89,13 @@ function multiply(a, b) {
 
 function divide(a, b) {
   return a / b;
+}
+
+function endOperation() {
+  result = operate(Number(firstValue), symbol, Number(secondValue));
+  display.textContent = result;
+  firstValue = result;
+  secondValue = "";
+  symbol = "";
+  result = "";
 }

@@ -6,34 +6,22 @@ const operators = document.querySelectorAll(".operator");
 const equal = document.querySelector("#equal");
 
 display.textContent = "";
-
 let firstValue = "";
 let secondValue = "";
 let symbol = "";
 let result = "";
 
-//add event listener to each button
 numbers.forEach((number) => {
   number.addEventListener("click", () => {
     //Add a max length
-
     let value = number.textContent;
-    //Clear screen after result
-    if (result !== "") {
-      result = "";
-      display.textContent = result;
-      display.textContent += value;
-    }
-    //take inner text
-    else {
-      //after each press, update display
-      display.textContent += value;
-      //If operator hasn't been entered, store as first value
-      if (symbol === "") {
-        firstValue += value;
-      } else {
-        secondValue += value;
-      }
+
+    display.textContent += value;
+    //If operator hasn't been entered, store as first value
+    if (symbol === "") {
+      firstValue += value;
+    } else {
+      secondValue += value;
     }
   });
 });
@@ -56,7 +44,10 @@ operators.forEach((operator) => {
 equal.addEventListener("click", () => {
   endOperation();
 });
-//add event listener for clear and delete
+//add event listener for clear and delete. Remeber to clear firstNum
+clearBtn.addEventListener("click", () => {
+  clear();
+});
 
 function operate(firstNum, operator, secondNum) {
   switch (operator) {
@@ -95,6 +86,14 @@ function endOperation() {
   result = operate(Number(firstValue), symbol, Number(secondValue));
   display.textContent = result;
   firstValue = result;
+  secondValue = "";
+  symbol = "";
+  result = "";
+}
+
+function clear() {
+  display.textContent = "";
+  firstValue = "";
   secondValue = "";
   symbol = "";
   result = "";

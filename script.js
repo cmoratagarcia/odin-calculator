@@ -30,8 +30,6 @@ numbers.forEach((number) => {
 
 operators.forEach((operator) => {
   operator.addEventListener("click", () => {
-    //after each operator, store first number
-    // firstNum = number;
     //take operator value
     symbol = operator.textContent;
     display.textContent += symbol;
@@ -39,10 +37,9 @@ operators.forEach((operator) => {
   });
 });
 
-//return result at fourth press
 //add event listener to equal, return result and reset display
 equal.addEventListener("click", () => {
-  let result = operate(firstValue, symbol, secondValue);
+  let result = operate(Number(firstValue), symbol, Number(secondValue));
   display.textContent = result;
 });
 //add event listener for clear and delete
@@ -50,16 +47,18 @@ equal.addEventListener("click", () => {
 function operate(firstNum, operator, secondNum) {
   switch (operator) {
     case "+":
-      add(firstNum, secondNum);
+      return add(firstNum, secondNum);
       break;
     case "-":
-      subtract(firstNum, secondNum);
+      return subtract(firstNum, secondNum);
       break;
+    //Fix!
     case "&times":
-      multiply(firstNum, secondNum);
+      return multiply(firstNum, secondNum);
       break;
+    //Fix!
     case "&div":
-      divide(firstNum, secondNum);
+      return divide(firstNum, secondNum);
       break;
   }
 }

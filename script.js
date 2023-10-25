@@ -36,27 +36,32 @@ numbers.forEach((number) => {
 operators.forEach((operator) => {
   operator.addEventListener("click", () => {
     //clear display here too?
+    if (storedResult !== "") {
+      secondValue = "";
+      symbol = "";
+      firstValue = storedResult;
+      storedResult = "";
+    }
     if (symbol === "") {
-      if (storedResult !== "") {
-        firstValue = storedResult;
-      }
       symbol = operator.textContent;
       display.textContent += symbol;
     } else {
       endOperation();
-      console.log(storedResult);
     }
   });
 });
 
-//add event listener to equal, return result and reset display
 equal.addEventListener("click", () => {
   endOperation();
 });
-//add event listener for clear and delete. Remeber to clear firstNum
+
 clearBtn.addEventListener("click", () => {
   clear();
 });
+
+// deleteBtn.addEventListener("click", () => {
+//   return deleteOne(display.textContent);
+// });
 
 function operate(firstNum, operator, secondNum) {
   switch (operator) {
@@ -105,6 +110,10 @@ function clear() {
   symbol = "";
   result = "";
   storedResult = "";
+}
+
+function deleteOne(str) {
+  return str.slice(0, -1);
 }
 //decimals
 //link keyboard?

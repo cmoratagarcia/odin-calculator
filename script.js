@@ -23,22 +23,7 @@ numbers.forEach((number) => {
         display.textContent = "";
       }
 
-      let value = number.textContent;
-
-      //If operator hasn't been entered, store as first value
-      if (symbol === "") {
-        if (value == "." && firstValue.includes(".")) {
-          return;
-        }
-        display.textContent += value;
-        firstValue += value;
-      } else {
-        if (value == "." && secondValue.includes(".")) {
-          return;
-        }
-        display.textContent += value;
-        secondValue += value;
-      }
+      updateValues(number.textContent);
     }
   });
 });
@@ -73,15 +58,32 @@ deleteBtn.addEventListener("click", () => {
 
   if (symbol === "") {
     firstValue = display.textContent;
+    // If an operator is present, update operator or secondValue
   } else if (secondValue === "") {
     symbol = "";
   } else {
-    // If an operator is present, update secondValue
     secondValue = display.textContent.slice(firstValue.length + 1);
   }
 });
 
 //FUNCTIONS
+
+function updateValues(value) {
+  if (symbol === "") {
+    if (value === "." && firstValue.includes(".")) {
+      return;
+    }
+    display.textContent += value;
+    firstValue += value;
+  } else {
+    if (value === "." && secondValue.includes(".")) {
+      return;
+    }
+    display.textContent += value;
+    secondValue += value;
+  }
+}
+
 function operate(firstNum, operator, secondNum) {
   switch (operator) {
     case "+":

@@ -68,9 +68,18 @@ clearBtn.addEventListener("click", () => {
   clear();
 });
 
-// deleteBtn.addEventListener("click", () => {
-//   return deleteOne(display.textContent);
-// });
+deleteBtn.addEventListener("click", () => {
+  display.textContent = deleteOne(display.textContent);
+
+  if (symbol === "") {
+    firstValue = display.textContent;
+  } else if (secondValue === "") {
+    symbol = "";
+  } else {
+    // If an operator is present, update secondValue
+    secondValue = display.textContent.slice(firstValue.length + 1);
+  }
+});
 
 //FUNCTIONS
 function operate(firstNum, operator, secondNum) {
@@ -125,5 +134,5 @@ function clear() {
 function deleteOne(str) {
   return str.slice(0, -1);
 }
-//decimals
+
 //link keyboard?

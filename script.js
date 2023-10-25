@@ -12,23 +12,31 @@ let symbol = "";
 let result = "";
 let storedResult = "";
 
+//EVENT LISTENERS
 numbers.forEach((number) => {
   number.addEventListener("click", () => {
     if (display.textContent.length < 7) {
-   
       if (storedResult !== "") {
         clear();
       }
-
       if (display.textContent === "0") {
         display.textContent = "";
       }
+
       let value = number.textContent;
-      display.textContent += value;
+
       //If operator hasn't been entered, store as first value
       if (symbol === "") {
+        if (value == "." && firstValue.includes(".")) {
+          return;
+        }
+        display.textContent += value;
         firstValue += value;
       } else {
+        if (value == "." && secondValue.includes(".")) {
+          return;
+        }
+        display.textContent += value;
         secondValue += value;
       }
     }
@@ -37,7 +45,6 @@ numbers.forEach((number) => {
 
 operators.forEach((operator) => {
   operator.addEventListener("click", () => {
-    //clear display here too?
     if (storedResult !== "") {
       secondValue = "";
       symbol = "";
@@ -65,6 +72,7 @@ clearBtn.addEventListener("click", () => {
 //   return deleteOne(display.textContent);
 // });
 
+//FUNCTIONS
 function operate(firstNum, operator, secondNum) {
   switch (operator) {
     case "+":

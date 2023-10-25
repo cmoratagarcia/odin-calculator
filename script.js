@@ -5,7 +5,7 @@ const numbers = document.querySelectorAll(".number");
 const operators = document.querySelectorAll(".operator");
 const equal = document.querySelector("#equal");
 
-display.textContent = "";
+display.textContent = "0";
 let firstValue = "";
 let secondValue = "";
 let symbol = "";
@@ -17,6 +17,10 @@ numbers.forEach((number) => {
     //Add a max length
     if (storedResult !== "") {
       clear();
+    }
+
+    if (display.textContent === "0") {
+      display.textContent = "";
     }
     let value = number.textContent;
     display.textContent += value;
@@ -31,6 +35,7 @@ numbers.forEach((number) => {
 
 operators.forEach((operator) => {
   operator.addEventListener("click", () => {
+    //clear display here too?
     if (symbol === "") {
       if (storedResult !== "") {
         firstValue = storedResult;
@@ -39,6 +44,7 @@ operators.forEach((operator) => {
       display.textContent += symbol;
     } else {
       endOperation();
+      console.log(storedResult);
     }
   });
 });
@@ -93,10 +99,12 @@ function endOperation() {
 }
 
 function clear() {
-  display.textContent = "";
+  display.textContent = "0";
   firstValue = "";
   secondValue = "";
   symbol = "";
   result = "";
   storedResult = "";
 }
+//decimals
+//link keyboard?

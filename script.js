@@ -31,10 +31,7 @@ numbers.forEach((number) => {
 operators.forEach((operator) => {
   operator.addEventListener("click", () => {
     if (storedResult !== "") {
-      secondValue = "";
-      symbol = "";
       firstValue = storedResult;
-      storedResult = "";
     }
     if (symbol === "") {
       symbol = operator.textContent;
@@ -55,9 +52,13 @@ clearBtn.addEventListener("click", () => {
 
 deleteBtn.addEventListener("click", () => {
   display.textContent = deleteOne(display.textContent);
+  storedResult = "";
+  firstValue = "";
+  secondValue = "";
 
   if (symbol === "") {
     firstValue = display.textContent;
+
     // If an operator is present, update operator or secondValue
   } else if (secondValue === "") {
     symbol = "";
@@ -67,7 +68,6 @@ deleteBtn.addEventListener("click", () => {
 });
 
 //FUNCTIONS
-
 function updateValues(value) {
   if (symbol === "") {
     if (value === "." && firstValue.includes(".")) {
@@ -122,6 +122,8 @@ function endOperation() {
   result = +longResult.toFixed(4);
   display.textContent = result;
   storedResult = result;
+  symbol = "";
+  firstValue = "";
 }
 
 function clear() {

@@ -14,21 +14,23 @@ let storedResult = "";
 
 numbers.forEach((number) => {
   number.addEventListener("click", () => {
-    //Add a max length
-    if (storedResult !== "") {
-      clear();
-    }
+    if (display.textContent.length < 7) {
+   
+      if (storedResult !== "") {
+        clear();
+      }
 
-    if (display.textContent === "0") {
-      display.textContent = "";
-    }
-    let value = number.textContent;
-    display.textContent += value;
-    //If operator hasn't been entered, store as first value
-    if (symbol === "") {
-      firstValue += value;
-    } else {
-      secondValue += value;
+      if (display.textContent === "0") {
+        display.textContent = "";
+      }
+      let value = number.textContent;
+      display.textContent += value;
+      //If operator hasn't been entered, store as first value
+      if (symbol === "") {
+        firstValue += value;
+      } else {
+        secondValue += value;
+      }
     }
   });
 });

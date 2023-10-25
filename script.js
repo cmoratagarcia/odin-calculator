@@ -15,7 +15,7 @@ let storedResult = "";
 //EVENT LISTENERS
 numbers.forEach((number) => {
   number.addEventListener("click", () => {
-    if (display.textContent.length < 7) {
+    if (display.textContent.length < 10) {
       if (storedResult !== "") {
         clear();
       }

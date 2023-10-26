@@ -16,13 +16,9 @@ let storedResult = "";
 numbers.forEach((number) => {
   number.addEventListener("click", () => {
     if (display.textContent.length < 10) {
-      if (storedResult !== "") {
-        clear();
-      }
       if (display.textContent === "0") {
         display.textContent = "";
       }
-
       updateValues(number.textContent);
     }
   });
@@ -30,9 +26,6 @@ numbers.forEach((number) => {
 
 operators.forEach((operator) => {
   operator.addEventListener("click", () => {
-    if (storedResult !== "") {
-      firstValue = storedResult;
-    }
     if (symbol === "") {
       symbol = operator.textContent;
       display.textContent += symbol;
@@ -70,6 +63,9 @@ deleteBtn.addEventListener("click", () => {
 //FUNCTIONS
 function updateValues(value) {
   if (symbol === "") {
+    if (firstValue !== "") {
+      clear();
+    }
     if (value === "." && firstValue.includes(".")) {
       return;
     }
@@ -83,6 +79,7 @@ function updateValues(value) {
     secondValue += value;
   }
 }
+console.log(`first ${firstValue}, symbol ${symbol} second ${secondValue}`);
 
 function operate(firstNum, operator, secondNum) {
   switch (operator) {
@@ -114,6 +111,7 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
+  //fix issue!
   return a / b;
 }
 
@@ -121,9 +119,9 @@ function endOperation() {
   longResult = operate(Number(firstValue), symbol, Number(secondValue));
   result = +longResult.toFixed(4);
   display.textContent = result;
-  storedResult = result;
+  firstValue = result;
   symbol = "";
-  firstValue = "";
+  secondValue = "";
 }
 
 function clear() {

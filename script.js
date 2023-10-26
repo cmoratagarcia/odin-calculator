@@ -15,12 +15,7 @@ let storedResult = "";
 //EVENT LISTENERS
 numbers.forEach((number) => {
   number.addEventListener("click", () => {
-    if (display.textContent.length < 10) {
-      if (display.textContent === "0") {
-        display.textContent = "";
-      }
-      updateValues(number.textContent);
-    }
+    handleNumbers(number.textContent);
   });
 });
 
@@ -49,14 +44,9 @@ document.addEventListener("keydown", (event) => {
   const isNumber = /^[0-9]$/i.test(key);
   const isOperator = /^[+-/*]$/i.test(key);
 
-  // Check if the pressed key is a number
+  //If pressed key is a number
   if (isNumber || key === ".") {
-    if (display.textContent.length < 10) {
-      if (display.textContent === "0") {
-        display.textContent = "";
-      }
-      updateValues(key);
-    }
+    handleNumbers(key);
   }
   //If key is an operator
   else if (isOperator) {
@@ -67,6 +57,7 @@ document.addEventListener("keydown", (event) => {
     deleteOne();
   }
 });
+
 //FUNCTIONS
 function updateValues(value) {
   if (symbol === "") {
@@ -84,6 +75,15 @@ function updateValues(value) {
     }
     display.textContent += value;
     secondValue += value;
+  }
+}
+
+function handleNumbers(value) {
+  if (display.textContent.length < 10) {
+    if (display.textContent === "0") {
+      display.textContent = "";
+    }
+    updateValues(value);
   }
 }
 function handleOperators(value) {

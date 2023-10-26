@@ -64,6 +64,7 @@ deleteBtn.addEventListener("click", () => {
 document.addEventListener("keydown", (event) => {
   const key = event.key;
   const isNumber = /^[0-9]$/i.test(event.key);
+  const isOperator = /^[+-/*]$/i.test(event.key);
 
   // Check if the pressed key is a number
   if (isNumber || key === ".") {
@@ -71,11 +72,13 @@ document.addEventListener("keydown", (event) => {
       if (display.textContent === "0") {
         display.textContent = "";
       }
-      updateValues(event.key);
+      updateValues(key);
     }
   }
-
   //If key is an operator
+  if (isOperator) {
+    handleOperators(key);
+  }
 });
 //FUNCTIONS
 function updateValues(value) {
@@ -115,7 +118,13 @@ function operate(firstNum, operator, secondNum) {
     case "×":
       return multiply(firstNum, secondNum);
       break;
+    case "*":
+      return multiply(firstNum, secondNum);
+      break;
     case "÷":
+      return divide(firstNum, secondNum);
+      break;
+    case "/":
       return divide(firstNum, secondNum);
       break;
   }

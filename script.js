@@ -63,6 +63,8 @@ document.addEventListener("keydown", (event) => {
     handleOperators(key);
   } else if (key === "Enter") {
     endOperation();
+  } else if (key === "Backspace") {
+    deleteOne();
   }
 });
 //FUNCTIONS

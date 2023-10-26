@@ -76,8 +76,10 @@ document.addEventListener("keydown", (event) => {
     }
   }
   //If key is an operator
-  if (isOperator) {
+  else if (isOperator) {
     handleOperators(key);
+  } else if (key === "Enter") {
+    endOperation();
   }
 });
 //FUNCTIONS

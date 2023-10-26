@@ -63,8 +63,8 @@ deleteBtn.addEventListener("click", () => {
 // Add an event listener to the document to capture keyboard input
 document.addEventListener("keydown", (event) => {
   const key = event.key;
-  const isNumber = /^[0-9]$/i.test(event.key);
-  const isOperator = /^[+-/*]$/i.test(event.key);
+  const isNumber = /^[0-9]$/i.test(key);
+  const isOperator = /^[+-/*]$/i.test(key);
 
   // Check if the pressed key is a number
   if (isNumber || key === ".") {
@@ -103,7 +103,15 @@ function handleOperators(value) {
   if (storedResult !== "") {
     firstValue = storedResult;
   }
-  symbol = value;
+  if (value === "/") {
+    //Fix!
+    symbol = "÷";
+  }
+  if (value === "*") {
+    symbol = "×";
+  } else {
+    symbol = value;
+  }
   display.textContent += symbol;
 }
 

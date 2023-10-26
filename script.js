@@ -26,11 +26,7 @@ numbers.forEach((number) => {
 
 operators.forEach((operator) => {
   operator.addEventListener("click", () => {
-    if (symbol === "") {
-      handleOperators(operator.textContent);
-    } else {
-      endOperation();
-    }
+    handleOperators(operator.textContent);
   });
 });
 
@@ -102,19 +98,23 @@ function updateValues(value) {
   }
 }
 function handleOperators(value) {
-  if (storedResult !== "") {
-    firstValue = storedResult;
-  }
-  if (value === "/") {
-    //Fix!
-    symbol = "÷";
-  }
-  if (value === "*") {
-    symbol = "×";
+  if (symbol === "") {
+    if (storedResult !== "") {
+      firstValue = storedResult;
+    }
+    if (value === "/") {
+      //Fix!
+      symbol = "÷";
+    }
+    if (value === "*") {
+      symbol = "×";
+    } else {
+      symbol = value;
+    }
+    display.textContent += symbol;
   } else {
-    symbol = value;
+    endOperation();
   }
-  display.textContent += symbol;
 }
 
 function operate(firstNum, operator, secondNum) {

@@ -39,23 +39,10 @@ clearBtn.addEventListener("click", () => {
 });
 
 deleteBtn.addEventListener("click", () => {
-  display.textContent = deleteOne(display.textContent);
-  storedResult = "";
-  firstValue = "";
-  secondValue = "";
-
-  if (symbol === "") {
-    firstValue = display.textContent;
-
-    // If an operator is present, update operator or secondValue
-  } else if (secondValue === "") {
-    symbol = "";
-  } else {
-    secondValue = display.textContent.slice(firstValue.length + 1);
-  }
+  deleteOne();
 });
 
-//Keyboard event listener
+//Keyboard
 // Add an event listener to the document to capture keyboard input
 document.addEventListener("keydown", (event) => {
   const key = event.key;
@@ -175,8 +162,21 @@ function clear() {
   storedResult = "";
 }
 
-function deleteOne(str) {
-  return str.slice(0, -1);
+function deleteOne() {
+  display.textContent = display.textContent.slice(0, -1);
+  storedResult = "";
+  firstValue = "";
+  secondValue = "";
+
+  if (symbol === "") {
+    firstValue = display.textContent;
+
+    // If an operator is present, update operator or secondValue
+  } else if (secondValue === "") {
+    symbol = "";
+  } else {
+    secondValue = display.textContent.slice(firstValue.length + 1);
+  }
 }
 
 //Add keyboard support in the future

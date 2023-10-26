@@ -79,7 +79,6 @@ function updateValues(value) {
     secondValue += value;
   }
 }
-console.log(`first ${firstValue}, symbol ${symbol} second ${secondValue}`);
 
 function operate(firstNum, operator, secondNum) {
   switch (operator) {
@@ -111,7 +110,6 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-  //fix issue!
   return a / b;
 }
 
@@ -137,4 +135,4 @@ function deleteOne(str) {
   return str.slice(0, -1);
 }
 
-//link keyboard?
+//Add keyboard support in the future

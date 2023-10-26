@@ -27,6 +27,9 @@ numbers.forEach((number) => {
 operators.forEach((operator) => {
   operator.addEventListener("click", () => {
     if (symbol === "") {
+      if (storedResult !== "") {
+        firstValue = storedResult;
+      }
       symbol = operator.textContent;
       display.textContent += symbol;
     } else {
@@ -63,7 +66,7 @@ deleteBtn.addEventListener("click", () => {
 //FUNCTIONS
 function updateValues(value) {
   if (symbol === "") {
-    if (firstValue !== "") {
+    if (storedResult !== "") {
       clear();
     }
     if (value === "." && firstValue.includes(".")) {
@@ -117,8 +120,9 @@ function endOperation() {
   longResult = operate(Number(firstValue), symbol, Number(secondValue));
   result = +longResult.toFixed(4);
   display.textContent = result;
-  firstValue = result;
+  storedResult = result;
   symbol = "";
+  firstValue = "";
   secondValue = "";
 }
 

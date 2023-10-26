@@ -64,6 +64,9 @@ function updateValues(value) {
     if (storedResult !== "") {
       clear();
     }
+    if (display.textContent === "0") {
+      display.textContent = "";
+    }
     if (value === "." && firstValue.includes(".")) {
       return;
     }
@@ -80,9 +83,6 @@ function updateValues(value) {
 
 function handleNumbers(value) {
   if (display.textContent.length < 10) {
-    if (display.textContent === "0") {
-      display.textContent = "";
-    }
     updateValues(value);
   }
 }

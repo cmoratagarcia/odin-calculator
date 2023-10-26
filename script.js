@@ -27,11 +27,7 @@ numbers.forEach((number) => {
 operators.forEach((operator) => {
   operator.addEventListener("click", () => {
     if (symbol === "") {
-      if (storedResult !== "") {
-        firstValue = storedResult;
-      }
-      symbol = operator.textContent;
-      display.textContent += symbol;
+      handleOperators(operator.textContent);
     } else {
       endOperation();
     }
@@ -99,6 +95,13 @@ function updateValues(value) {
     display.textContent += value;
     secondValue += value;
   }
+}
+function handleOperators(value) {
+  if (storedResult !== "") {
+    firstValue = storedResult;
+  }
+  symbol = value;
+  display.textContent += symbol;
 }
 
 function operate(firstNum, operator, secondNum) {

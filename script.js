@@ -86,17 +86,16 @@ function handleNumbers(value) {
     updateValues(value);
   }
 }
+
 function handleOperators(value) {
   if (symbol === "") {
     if (storedResult !== "") {
       firstValue = storedResult;
     }
-    if (value === "/") {
-      //Fix!
-      symbol = "÷";
-    }
     if (value === "*") {
       symbol = "×";
+    } else if (value === "/") {
+      symbol = "÷";
     } else {
       symbol = value;
     }

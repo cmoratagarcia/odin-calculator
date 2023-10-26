@@ -63,6 +63,24 @@ deleteBtn.addEventListener("click", () => {
   }
 });
 
+//Keyboard event listener
+// Add an event listener to the document to capture keyboard input
+document.addEventListener("keydown", (event) => {
+  const key = event.key;
+  const isNumber = /^[0-9]$/i.test(event.key);
+
+  // Check if the pressed key is a number
+  if (isNumber || key === ".") {
+    if (display.textContent.length < 10) {
+      if (display.textContent === "0") {
+        display.textContent = "";
+      }
+      updateValues(event.key);
+    }
+  }
+
+  //If key is an operator
+});
 //FUNCTIONS
 function updateValues(value) {
   if (symbol === "") {

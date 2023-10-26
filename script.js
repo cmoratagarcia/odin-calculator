@@ -151,7 +151,6 @@ function endOperation() {
   display.textContent = result;
   storedResult = result;
   symbol = "";
-  firstValue = "";
   secondValue = "";
 }
 
@@ -166,19 +165,15 @@ function clear() {
 
 function deleteOne() {
   display.textContent = display.textContent.slice(0, -1);
-  storedResult = "";
-  firstValue = "";
-  secondValue = "";
 
   if (symbol === "") {
+    storedResult = "";
     firstValue = display.textContent;
 
     // If an operator is present, update operator or secondValue
   } else if (secondValue === "") {
     symbol = "";
   } else {
-    secondValue = display.textContent.slice(firstValue.length + 1);
+    secondValue = secondValue.slice(0, -1);
   }
 }
-
-//Add keyboard support in the future
